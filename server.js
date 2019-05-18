@@ -12,5 +12,5 @@ app.get("/", (req, res) => {
     res.send("home page working")
 })
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 app.listen(port, (err) => console.log("server is online running on port: " + port))
