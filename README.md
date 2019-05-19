@@ -1,5 +1,5 @@
 
-##An ecommerce site to for people to post and display products to sell (similar to craigslist/eBay).
+##An ecommerce site for people to post and display products to sell (similar to craigslist/eBay).
 ##No user login required yet, anyone can post a product for sale.
 ##Products will be saved in a backend MongoDb
 ##Make sure to include the following info for selling items: seller name, product name, product id (generated if possible), price, and description.
