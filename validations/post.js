@@ -1,8 +1,8 @@
 const validator = require("validator")
 
-const isEmpty = require("/is-empty.js")
+const isEmpty = require("./is-empty.js")
 
-module.exports = function validatePostInput(date) {
+module.exports = function validatePostInput(data) {
     let errors = {}
 
     data.email = !isEmpty(data.email) ? data.email : "";
@@ -34,4 +34,8 @@ module.exports = function validatePostInput(date) {
     if (validator.isEmpty(data.startingBid) && validator.isEmpty(data.buyNow)){
         errors.buyNow = "Must have either a starting bid price or a buy now price!"
     }
+    return {
+        errors,
+        isValid: isEmpty(errors)
+      };
 }

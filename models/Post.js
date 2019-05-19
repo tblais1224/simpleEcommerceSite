@@ -24,25 +24,22 @@ const PostSchema = new Schema({
         required: true
     },
     startingBid: {
-        type: Number,
-        required: true
+        type: Number
     },
     buyNow: {
         type: Number
     },
     bidEndDate: {
-        type: Date,
-        required: true
+        type: Date
     },
     shippingCost: {
-        type: Number,
-        required: true
+        type: Number
     },
     img: {
         data: Buffer,
         contentType: String
     },
-    bid: {
+    bid: [{
         amount: {
             type: Number,
             required: true
@@ -51,10 +48,12 @@ const PostSchema = new Schema({
             type: String,
             required: true
         }
-    },
-    comments:[{
-        type: String,
-        required: true
+    }],
+    comments: [{
+        text: {
+            type: String,
+            required: true
+        }
     }]
 })
 
