@@ -16,14 +16,18 @@ class Post extends Component {
       buyNow: "",
       bidEndDate: "",
       shippingCost: "",
-      img: "",
+      img: null,
       errors: {}
     };
   }
 
   onChange = e => {
-    //this setState for the name of the target (name, email, etc.), then sets it to the value of the event target
-    this.setState({ [e.target.name]: e.target.value });
+    if (e.target.name === "img") {
+      this.setState({ [e.target.name]: e.target.files[0] });
+    } else {
+      //this setState for the name of the target (name, email, etc.), then sets it to the value of the event target
+      this.setState({ [e.target.name]: e.target.value });
+    }
   };
 
   onSubmit = e => {
@@ -40,12 +44,18 @@ class Post extends Component {
       bidEndDate: this.state.bidEndDate,
       buyNow: this.state.buyNow,
       shippingCost: this.state.shippingCost,
-      img: this.state.img
+      img: null
+    };
+    
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
     };
 
     //sends post to the proxy plus route below
     axios
-      .post("/api/posts/", newPost)
+      .post("http://localhost:5000/api/posts/", newPost, config)
       .then(res => console.log(res.data))
       //console logs the data from the error response
       .catch(err => this.setState({ errors: err.response.data }));
@@ -63,7 +73,7 @@ class Post extends Component {
               <p className="lead text-center">
                 Add an item to either bid away or sell.
               </p>
-              <form onSubmit={this.onSubmit} encType="multipart/form-data">
+              <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
@@ -197,7 +207,6 @@ class Post extends Component {
                     className={classnames("form-control form-control-lg", {
                       "is-invalid": errors.description
                     })}
-                    placeholder="Image"
                     name="img"
                     value={this.state.img}
                     onChange={this.onChange}
