@@ -6,7 +6,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Post from "./components/Post";
-import Shop from "./components/Post";
+import Shop from "./components/shop";
 
 import "./App.css";
 
