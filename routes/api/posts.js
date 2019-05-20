@@ -58,7 +58,7 @@ router.get("/:id", (req, res) => {
 // @route   POST /api/posts
 // @desc   Create a post
 // @access   public
-router.post("/", upload.single('avatar'), jsonParser, (req, res) => {
+router.post("/", upload.single('img'), jsonParser, (req, res) => {
 
     const {
         errors,
@@ -74,7 +74,6 @@ router.post("/", upload.single('avatar'), jsonParser, (req, res) => {
         item: req.body.item,
         condition: req.body.condition,
         description: req.body.description,
-        date: req.body.date,
         startingBid: req.body.startingBid,
         buyNow: req.body.buyNow,
         bidEndDate: req.body.bidEndDate,
